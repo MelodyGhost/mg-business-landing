@@ -4,21 +4,35 @@ import NextLink from 'next/link';
 import { jsx, Link as A } from 'theme-ui';
 import { Link as MenuLink } from 'react-scroll';
 import { HiOutlineChevronRight } from 'react-icons/hi';
+import { useRouter } from 'next/router';
 
 export function NavLink({ path, label, children, ...rest }) {
+  const { route } = useRouter();
+
+  path = path === 'home' ? '/' : '/' + path;
   return (
-    <MenuLink
-      to={path}
-      spy={true}
-      offset={-70}
-      smooth={true}
-      duration={500}
-      className="nav-item"
-      activeClass="active"
-      {...rest}
-    >
-      {label}
-    </MenuLink>
+    // <MenuLink
+    //   to={path}
+    //   spy={true}
+    //   offset={-70}
+    //   smooth={true}
+    //   duration={500}
+    //   className="nav-item"
+    //   activeClass="active"
+    //   {...rest}
+    // >
+    //   {label}
+    // </MenuLink>
+
+    <NextLink href={path}>
+      <a
+        className={`nav-item ${
+          route.slice(1) === path || path === route ? 'active' : ''
+        }`}
+      >
+        {label}
+      </a>
+    </NextLink>
   );
 }
 

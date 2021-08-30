@@ -92,6 +92,8 @@ const styles = {
       fontWeight: 400,
       padding: 0,
       margin: [0, 0, 0, 0, '0 20px'],
+      textDecoration: 'none',
+      color: 'inherit',
     },
     '.active': {
       color: 'primary',
